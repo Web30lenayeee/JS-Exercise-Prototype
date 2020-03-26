@@ -80,7 +80,12 @@ Car.prototype.fill = function(gallons){
   this.tank = this.tank + gallons;
 }
 
-
+Car.prototype.drive = function(distance){
+  const usedGas  = (distance/this.milesPerGallon); // the amount of gas to be used
+  if(this.tank >= usedGas){
+    this.odometer = this.odometer + distance;
+  } 
+}
 
 
 /*
@@ -91,10 +96,10 @@ Car.prototype.fill = function(gallons){
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby(name, age, favoriteToy) {
+  Person.call(this,favoriteToy);
+  this.favoriteToy = favoriteToy;
   this.name = name;
   this.age = age;
-  this.favoriteToy = favoriteToy;
-  Person.call(this,favoriteToy);
   Baby.prototype.play = function() {
     return `Playing with ${favoriteToy}`
   }
